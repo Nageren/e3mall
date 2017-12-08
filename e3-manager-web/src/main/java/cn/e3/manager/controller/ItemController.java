@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.e3.manager.service.ItemService;
 import cn.e3.pojo.TbItem;
+import cn.e3.pojo.TbItemDesc;
 import cn.e3.utils.DataGridPagebean;
+import cn.e3.utils.E3mallResult;
 
 @Controller
 public class ItemController {
@@ -39,5 +41,21 @@ public class ItemController {
 		DataGridPagebean pagebean = itemService.findItemListByPage(page, rows);
 		
 		return pagebean;
+	}
+	
+	
+	
+	/**
+	 * 请求:/item/save
+	 * 参数:TbItem item ,TbItemDesc itemDesc,ItemParam param
+	 * 返回值: json格式的E3mallResult
+	 */
+	@RequestMapping("/item/save")
+	@ResponseBody
+	public E3mallResult saveItem(TbItem item ,TbItemDesc itemDesc){
+		
+		E3mallResult result = itemService.saveItem(item, itemDesc);
+		
+		return result;
 	}
 }

@@ -1,20 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>cn.e3mall</groupId>
-    <artifactId>e3-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>e3-manager-web</artifactId>
-  <packaging>war</packaging>
-  
-  <!-- 
-  	表现层:
-  	 1.jsp
-  	 2.jstl
-  	 3.servlet
-  	 4,service
-   -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.e3mall</groupId>
+		<artifactId>e3-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>e3-manager-web</artifactId>
+	<packaging>war</packaging>
+
+	<!-- 表现层: 1.jsp 2.jstl 3.servlet 4,service -->
 	<dependencies>
 		<dependency>
 			<groupId>jstl</groupId>
@@ -91,7 +86,7 @@
 			<artifactId>zkclient</artifactId>
 			<version>${zkclient.version}</version>
 		</dependency>
-		<!-- 分页坐标  -->
+		<!-- 分页坐标 -->
 		<dependency>
 			<groupId>com.github.miemiedev</groupId>
 			<artifactId>mybatis-paginator</artifactId>
@@ -101,6 +96,18 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 			<version>${pagehelper.version}</version>
+		</dependency>
+		<!-- 文件上传组件 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+		<!-- fastdfs_client -->
+		<dependency>
+			<groupId>fastdfs_client</groupId>
+			<artifactId>fastdfs_client</artifactId>
+			<version>1.25</version>
 		</dependency>
 	</dependencies>
 	<build>

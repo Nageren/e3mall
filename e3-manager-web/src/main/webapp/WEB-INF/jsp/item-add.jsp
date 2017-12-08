@@ -78,7 +78,7 @@ tr{
 		//初始化类目选择和图片上传器
 		E3MALL.init({fun:function(node){
 			//根据商品的分类id取商品 的规格模板，生成规格信息。第四天内容。
-			E3MALL.changeItemParam(node, "itemAddForm");
+			//E3MALL.changeItemParam(node, "itemAddForm");
 		}});
 	});
 	//提交表单
@@ -88,7 +88,7 @@ tr{
 			$.messager.alert('提示','表单还未填写完成!');
 			return ;
 		}
-		//取商品价格，单位为“分”
+		//取商品价格，单位为“分”   为了让价格计算准确  防止精度损失
 		$("#itemAddForm [name=price]").val(eval($("#itemAddForm [name=priceView]").val()) * 100);
 		//同步文本框中的商品描述
 		itemAddEditor.sync();
