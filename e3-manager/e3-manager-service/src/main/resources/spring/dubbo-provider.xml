@@ -28,9 +28,16 @@
 	<!-- 用dubbo协议在20880端口暴露服务 -->
 	<dubbo:protocol name="dubbo" port="20880" />
 	<!-- 声明需要暴露的服务接口 -->
+	
+	
 	<!-- 创建需要发布对象 -->
 	<bean id="itemServiceImpl" class="cn.e3.manager.service.impl.ItemServiceImpl"></bean>
 	<!-- 发布服务 -->
 	<dubbo:service interface="cn.e3.manager.service.ItemService" ref="itemServiceImpl" />
 	
+	
+	<!-- 创建需要发布对象 -->
+	<bean id="itemCatServiceImpl" class="cn.e3.manager.service.impl.ItemCatServiceImpl"></bean>
+	<!-- 发布服务 -->
+	<dubbo:service interface="cn.e3.manager.service.ItemCatService" ref="itemCatServiceImpl" />
 </beans>
