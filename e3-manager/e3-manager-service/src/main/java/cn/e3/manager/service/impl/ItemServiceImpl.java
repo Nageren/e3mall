@@ -12,10 +12,13 @@ import com.github.pagehelper.PageInfo;
 import cn.e3.manager.service.ItemService;
 import cn.e3.mapper.TbItemDescMapper;
 import cn.e3.mapper.TbItemMapper;
+import cn.e3.mapper.TbItemParamItemMapper;
+import cn.e3.mapper.TbItemParamMapper;
 import cn.e3.pojo.TbContentExample;
 import cn.e3.pojo.TbItem;
 import cn.e3.pojo.TbItemDesc;
 import cn.e3.pojo.TbItemExample;
+import cn.e3.pojo.TbItemParamItem;
 import cn.e3.utils.DataGridPagebean;
 import cn.e3.utils.E3mallResult;
 import cn.e3.utils.IDUtils;
@@ -32,6 +35,10 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private TbItemDescMapper ibItemDescMapper;
 	
+	
+	//注入商品的规格参数mapper接口代理对象
+	@Autowired
+	private TbItemParamItemMapper  tbItemParamItemMapper;
 	
 	
 	public TbItem findItemById(Long itemId) {
@@ -73,7 +80,7 @@ public class ItemServiceImpl implements ItemService {
 	 * 返回值: E3mallResult
 	 */
 	@Override
-	public E3mallResult saveItem(TbItem item, TbItemDesc itemDesc) {
+	public E3mallResult saveItem(TbItem item, TbItemDesc itemDesc,String itemParams) {
 		long itemId = IDUtils.genItemId();
 		item.setId(itemId);
 		//商品状态 1-正常  2-下架  3-删除
@@ -92,6 +99,19 @@ public class ItemServiceImpl implements ItemService {
 		
 		//保存商品描述对象
 		ibItemDescMapper.insert(itemDesc);
+		
+		//创建商品规格对象,封装规格参数
+		TbItemParamItem tbItemParamItem = new TbItemParamItem();
+		//封装参数
+		tbItemParamItem.setCreated(date);
+		tbItemParamItem.setUpdated(date);
+		tbItemParamItem.setItemId(itemId);
+		tbItemParamItem.setParamData(itemParams);
+		
+		//保存商品的规格参数
+		tbItemParamItemMapper.insertSelective(tbItemParamItem);
+		
+		
 		
 		return E3mallResult.ok();
 	}
